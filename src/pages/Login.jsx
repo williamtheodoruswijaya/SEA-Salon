@@ -24,7 +24,7 @@ function Login() {
               type="email"
               id="formEmail"
               placeholder="email"
-              className="p-3 rounded-xl bg-bluefield text-white w-full"
+              className="p-3 rounded-xl bg-bluefield text-black w-full"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
             />
@@ -34,13 +34,13 @@ function Login() {
               type="password"
               id="formPassword"
               placeholder="password"
-              className="p-3 rounded-xl bg-bluefield text-white w-full"
+              className="p-3 rounded-xl bg-bluefield text-black w-full"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
             />
           </div>
           <div>
-            <div className="flex pt-3">
+            <div className="flex pt-3 mb-1">
               <div className="pr-2 text-sm text-background">
                 Dont have an account?
               </div>
