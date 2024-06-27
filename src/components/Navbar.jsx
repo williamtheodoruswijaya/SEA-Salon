@@ -5,7 +5,7 @@ function Navbar() {
   const navigate = useNavigate();
   const handleClick = (title) => {
     if (title === "Home") {
-      navigate("/");
+      navigate("/dashboard");
     } else if (title === "Review") {
       navigate("/review");
     } else if (title === "Reservation") {
