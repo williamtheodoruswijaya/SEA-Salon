@@ -1,13 +1,17 @@
 import Navbar from "../components/Navbar";
 import review from "../assets/review.png";
+import star_on from "../assets/star_on.png";
+import star_off from "../assets/star_off.png";
 import { useState } from "react";
 
 function Review() {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [comments, setComments] = useState("");
+  const [rating, setRating] = useState(0);
+  const [hoverRating, setHoverRating] = useState(0);
   const submitReview = () => {
-    console.log(firstName, lastName, comments);
+    console.log(firstName, lastName, rating, comments);
   };
   return (
     <>
@@ -29,7 +33,7 @@ function Review() {
               Your feedback is valuable to us.
             </p>
             <div className="flex flex-row">
-              <div className=" pb-5 min-w-[20vh] mt-10 ml-10">
+              <div className="min-w-[20vh] mt-10 ml-10">
                 <input
                   value={firstName}
                   type="text"
@@ -38,7 +42,7 @@ function Review() {
                   className="p-3 rounded-xl bg-white text-black min-w-90"
                 />
               </div>
-              <div className=" pb-5 min-w-[20vh] mt-10 ml-10">
+              <div className=" min-w-[20vh] mt-10 ml-10">
                 <input
                   value={lastName}
                   type="text"
@@ -47,6 +51,68 @@ function Review() {
                   className="p-3 rounded-xl bg-white text-black min-w-90"
                 />
               </div>
+            </div>
+            <div className="flex">
+              <button
+                onClick={() => setRating(1)}
+                onMouseEnter={() => setHoverRating(1)}
+                onMouseLeave={() => setHoverRating(0)}
+                className="hover:bg-transparent pr-3"
+              >
+                <img
+                  src={`${rating > 0 || hoverRating > 0 ? star_on : star_off}`}
+                  alt=""
+                  className="w-10 ml-10 my-5"
+                />
+              </button>
+              <button
+                onClick={() => setRating(2)}
+                onMouseEnter={() => setHoverRating(2)}
+                onMouseLeave={() => setHoverRating(0)}
+                className="hover:bg-transparent pr-3"
+              >
+                <img
+                  src={`${rating > 1 || hoverRating > 1 ? star_on : star_off}`}
+                  alt=""
+                  className="w-10 ml-10 my-5"
+                />
+              </button>
+              <button
+                onClick={() => setRating(3)}
+                onMouseEnter={() => setHoverRating(3)}
+                onMouseLeave={() => setHoverRating(0)}
+                className="hover:bg-transparent pr-3"
+              >
+                <img
+                  src={`${rating > 2 || hoverRating > 2 ? star_on : star_off}`}
+                  alt=""
+                  className="w-10 ml-10 my-5"
+                />
+              </button>
+              <button
+                onClick={() => setRating(4)}
+                onMouseEnter={() => setHoverRating(4)}
+                onMouseLeave={() => setHoverRating(0)}
+                className="hover:bg-transparent pr-3"
+              >
+                <img
+                  src={`${rating > 3 || hoverRating > 3 ? star_on : star_off}`}
+                  alt=""
+                  className="w-10 ml-10 my-5"
+                />
+              </button>
+              <button
+                onClick={() => setRating(5)}
+                onMouseEnter={() => setHoverRating(5)}
+                onMouseLeave={() => setHoverRating(0)}
+                className="hover:bg-transparent pr-3"
+              >
+                <img
+                  src={`${rating > 4 || hoverRating > 4 ? star_on : star_off}`}
+                  alt=""
+                  className="w-10 ml-10 my-5"
+                />
+              </button>
             </div>
             <div className=" pb-5 ml-10 flex">
               <textarea
@@ -58,7 +124,7 @@ function Review() {
             </div>
             <button
               onClick={submitReview}
-              className="bg-secondary rounded-xl p-3 ml-10 min-w-[40vh] min-h-[7vh] text-white"
+              className="bg-secondary hover:bg-tertiary rounded-xl p-3 ml-10 min-w-[40vh] min-h-[7vh] text-white"
             >
               Submit
             </button>
