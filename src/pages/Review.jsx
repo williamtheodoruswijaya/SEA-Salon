@@ -5,13 +5,11 @@ import star_off from "../assets/star_off.png";
 import { useState } from "react";
 
 function Review() {
-  const [firstName, setFirstName] = useState("");
-  const [lastName, setLastName] = useState("");
   const [comments, setComments] = useState("");
   const [rating, setRating] = useState(0);
   const [hoverRating, setHoverRating] = useState(0);
   const submitReview = () => {
-    console.log(firstName, lastName, rating, comments);
+    console.log(rating, comments);
   };
   return (
     <>
@@ -32,26 +30,6 @@ function Review() {
               {" "}
               Your feedback is valuable to us.
             </p>
-            <div className="flex flex-row">
-              <div className="min-w-[20vh] mt-10 ml-10">
-                <input
-                  value={firstName}
-                  type="text"
-                  onChange={(e) => setFirstName(e.target.value)}
-                  placeholder="First Name"
-                  className="p-3 rounded-xl bg-white text-black min-w-90"
-                />
-              </div>
-              <div className=" min-w-[20vh] mt-10 ml-10">
-                <input
-                  value={lastName}
-                  type="text"
-                  onChange={(e) => setLastName(e.target.value)}
-                  placeholder="Last Name"
-                  className="p-3 rounded-xl bg-white text-black min-w-90"
-                />
-              </div>
-            </div>
             <div className="flex">
               <button
                 onClick={() => setRating(1)}
@@ -124,7 +102,7 @@ function Review() {
             </div>
             <button
               onClick={submitReview}
-              className="bg-secondary hover:bg-tertiary rounded-xl p-3 ml-10 min-w-[40vh] min-h-[7vh] text-white"
+              className="bg-secondary hover:bg-tertiary transition duration-300 ease-in-out rounded-xl p-3 ml-10 min-w-[40vh] min-h-[7vh] text-white"
             >
               Submit
             </button>
