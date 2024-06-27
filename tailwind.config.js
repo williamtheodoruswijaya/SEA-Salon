@@ -9,6 +9,8 @@ export default {
         secondary: "#D6589F",
         tertiary: "#D895DA",
         accent: "#FFD700",
+        white: "#FFFFFF",
+        cyan: "#00ffe5",
       },
       fontFamily: {
         sans: ["Poppins", "sans-serif"],
