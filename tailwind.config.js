@@ -30,6 +30,11 @@ export default {
         italic: "italic",
         normal: "normal",
       },
+      variants: {
+        extend: {
+          resize: ["responsive", "hover", "focus"],
+        },
+      },
     },
   },
   plugins: [],
