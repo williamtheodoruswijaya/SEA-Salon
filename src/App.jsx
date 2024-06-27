@@ -1,9 +1,14 @@
-import "./App.css";
+import Dashboard from "./pages/Dashboard.jsx";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
 function App() {
   return (
     <>
-      <h1 className="font-bold text-3xl underline">Sherly</h1>
+      <Router>
+        <Routes>
+          <Route path="/" element={<Dashboard />} />
+        </Routes>
+      </Router>
     </>
   );
 }
