@@ -14,10 +14,10 @@ function Dashboard() {
         rel="stylesheet"
       ></link>
       <Navbar />
-      <div className="bg-background w-full h-auto">
+      <div className="bg-[url('./assets/dashboard-background.png')] w-full h-auto">
         <div className="flex flex-row items-center justify-center">
           <div>
-            <h1 className="text-6xl font-bold text-primary mx-10">Sea Salon</h1>
+            <h1 className="text-8xl font-bold text-primary mx-10">Sea Salon</h1>
             <p className="text-sm font-medium text-primary mx-10">
               {" "}
               “Beauty and Elegance Redefined”
@@ -26,7 +26,7 @@ function Dashboard() {
           <img
             src={salon_dashboard}
             alt="salon_dashboard"
-            className="w-1/3 md:w-[90vh] h-auto mx-10 my-5"
+            className="w-1/3 md:w-[90vh] h-auto mx-10"
           />
         </div>
         <div className="flex flex-col items-center justify-center bg-primary w-full h-auto ">
