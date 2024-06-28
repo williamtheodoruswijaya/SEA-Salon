@@ -3,6 +3,7 @@ import TransparentButton from "./TransparentButton";
 import { useEffect, useState } from "react";
 import { useContext } from "react";
 import { AuthContext } from "../context/AuthContext";
+import { auth } from "../firebase";
 
 function Navbar() {
   const navigate = useNavigate();
@@ -17,6 +18,9 @@ function Navbar() {
       navigate("/login");
     } else if (title === "Register") {
       navigate("/register");
+    } else if (title === "Logout") {
+      auth.signOut();
+      navigate("/login");
     }
   };
 
@@ -38,7 +42,9 @@ function Navbar() {
           <TransparentButton title="Home" handleClick={handleClick} />
           <TransparentButton title="Review" handleClick={handleClick} />
           <TransparentButton title="Reservation" handleClick={handleClick} />
-          {isLogin ? null : (
+          {isLogin ? (
+            <TransparentButton title="Logout" handleClick={handleClick} />
+          ) : (
             <TransparentButton title="Login" handleClick={handleClick} />
           )}
           {isLogin ? null : (
