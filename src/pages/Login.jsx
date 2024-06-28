@@ -1,10 +1,45 @@
-import { useState } from "react";
-import { Link } from "react-router-dom";
+import { useState, useContext } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { auth, db } from "../firebase";
+import { signInWithEmailAndPassword } from "firebase/auth";
+import { doc, getDoc } from "firebase/firestore";
+import { AuthContext } from "../context/AuthContext";
 
 function Login() {
+  const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const signIn = () => {};
+  const setUserData = useContext(AuthContext);
+  const getUser = async () => {
+    try {
+      const docRef = doc(db, "MsUser", email);
+      const docSnap = await getDoc(docRef);
+      if (docSnap.exists()) {
+        return docSnap.data();
+      } else {
+        console.log("Data not exist in database");
+        return null;
+      }
+    } catch (e) {
+      console.error("Error getting document:", e);
+      return null;
+    }
+  };
+
+  const signIn = async () => {
+    if (email === "" || password === "") {
+      alert("Please fill in all fields");
+      return;
+    }
+    try {
+      await signInWithEmailAndPassword(auth, email, password);
+      const userData = await getUser();
+      setUserData(userData);
+      navigate("/");
+    } catch (e) {
+      console.error("Error signing in:", e);
+    }
+  };
 
   return (
     <>
