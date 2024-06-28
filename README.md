@@ -5,10 +5,6 @@
 - [Fitur](#fitur)
 - [Instalasi](#instalasi)
 - [Menjalankan Aplikasi](#menjalankan-aplikasi)
-- [Struktur Proyek](#struktur-proyek)
-- [Teknologi yang Digunakan](#teknologi-yang-digunakan)
-- [Kontribusi](#kontribusi)
-- [Lisensi](#lisensi)
 
 ## Pengantar
 Selamat datang di Aplikasi SEA Salon! Aplikasi ini adalah sebuah platform untuk SEA Salon. Aplikasi ini memudahkan pengguna untuk melihat layanan yang tersedia, memilih stylist favorit, dan membuat janji dengan cepat.
