@@ -3,6 +3,7 @@ import { auth, db } from "../firebase";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { v4 as uuidv4 } from "uuid";
 
 function Register() {
   const navigate = useNavigate();
@@ -13,8 +14,10 @@ function Register() {
   const storeUserData = async () => {
     try {
       const docRef = await setDoc(doc(db, "MsUser", email), {
+        userID: uuidv4(),
         name: name,
         email: email,
+        role: "customer", // "customer" or "admin
         phoneNumber: phoneNumber,
         password: password,
       });

@@ -6,8 +6,10 @@ import { onAuthStateChanged } from "firebase/auth";
 function AuthProvider({ children }) {
   const [user, setUser] = useState(null);
   const [userData, setUserData] = useState({
+    userID: "",
     email: "",
     name: "Not Signed In",
+    role: "",
     password: "",
     phoneNumber: "",
   });

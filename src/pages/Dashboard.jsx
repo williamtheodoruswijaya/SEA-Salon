@@ -3,8 +3,11 @@ import salon_dashboard from "../assets/salon_dashboard.png";
 import hair_cut from "../assets/Haircut_Services.jpeg";
 import manicure from "../assets/Manicure-Pedicure.jpg";
 import facial from "../assets/Facial-Treatments.jpg";
+import { useContext, useEffect, useState } from "react";
+import { AuthContext } from "../context/AuthContext";
 
 function Dashboard() {
+  const { userData } = useContext(AuthContext);
   return (
     <>
       <link rel="preconnect" href="https://fonts.googleapis.com" />

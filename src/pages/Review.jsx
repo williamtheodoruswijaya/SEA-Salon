@@ -2,15 +2,24 @@ import Navbar from "../components/Navbar";
 import review from "../assets/review.png";
 import star_on from "../assets/star_on.png";
 import star_off from "../assets/star_off.png";
-import { useState } from "react";
+import { useState, useContext, useEffect } from "react";
+import { AuthContext } from "../context/AuthContext";
 
 function Review() {
+  const { userData } = useContext(AuthContext);
+  const [isLogin, setIsLogin] = useState(false);
   const [comments, setComments] = useState("");
   const [rating, setRating] = useState(0);
   const [hoverRating, setHoverRating] = useState(0);
   const submitReview = () => {
     console.log(rating, comments);
   };
+  useEffect(() => {
+    if (userData.email !== "") {
+      setIsLogin(true);
+    }
+  }, [userData]);
+  const namaDepan = userData?.name.split(" ")[0];
   return (
     <>
       <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -20,12 +29,18 @@ function Review() {
         rel="stylesheet"
       ></link>
       <Navbar />
-      <div className="bg-[url('./assets/dashboard-background.png')] w-full h-auto">
+      <div className="bg-[url('./assets/dashboard-background.png')] w-screen h-screen">
         <div className="flex flex-row items-center justify-center">
           <div>
-            <h1 className="text-5xl font-bold text-primary mx-10 my-2">
-              How was your experience?
-            </h1>
+            {isLogin ? (
+              <h1 className="text-5xl font-bold text-primary mx-10 my-5">
+                How was your experience, {namaDepan}?
+              </h1>
+            ) : (
+              <h1 className="text-5xl font-bold text-primary mx-10 my-2">
+                How was your experience?
+              </h1>
+            )}
             <p className="text-sm font-medium text-primary mx-10">
               {" "}
               Your feedback is valuable to us.
