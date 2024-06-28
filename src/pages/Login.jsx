@@ -9,7 +9,7 @@ function Login() {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const setUserData = useContext(AuthContext);
+  const { setUserData } = useContext(AuthContext);
   const getUser = async () => {
     try {
       const docRef = doc(db, "MsUser", email);

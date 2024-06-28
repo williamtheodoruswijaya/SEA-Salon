@@ -1,6 +1,8 @@
 import { useNavigate } from "react-router-dom";
 import TransparentButton from "./TransparentButton";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useContext } from "react";
+import { AuthContext } from "../context/AuthContext";
 
 function Navbar() {
   const navigate = useNavigate();
@@ -19,6 +21,13 @@ function Navbar() {
   };
 
   const [isLogin, setIsLogin] = useState(false);
+  const { userData } = useContext(AuthContext);
+
+  useEffect(() => {
+    if (userData.email !== "") {
+      setIsLogin(true);
+    }
+  }, [userData]);
   return (
     <>
       <div className="flex flex-col md:flex-row items-center justify-between bg-secondary fixed w-full drop-shadow-2xl z-10">
