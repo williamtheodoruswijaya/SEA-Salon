@@ -4,15 +4,54 @@ import star_on from "../assets/star_on.png";
 import star_off from "../assets/star_off.png";
 import { useState, useContext, useEffect } from "react";
 import { AuthContext } from "../context/AuthContext";
+import { useNavigate } from "react-router-dom";
+import { doc, setDoc } from "firebase/firestore";
+import { db } from "../firebase";
+import { v4 as uuidv4 } from "uuid";
 
 function Review() {
   const { userData } = useContext(AuthContext);
+  const navigate = useNavigate();
   const [isLogin, setIsLogin] = useState(false);
   const [comments, setComments] = useState("");
   const [rating, setRating] = useState(0);
   const [hoverRating, setHoverRating] = useState(0);
-  const submitReview = () => {
-    console.log(rating, comments);
+  const storeReview = async () => {
+    try {
+      const docRef = await setDoc(doc(db, "MsReview", uuidv4()), {
+        name: userData.name,
+        comment: comments,
+        rating: rating,
+      });
+      console.log("Document written: ", docRef);
+      alert("Review submitted successfully");
+    } catch (e) {
+      console.log("Error adding document: ", e);
+      alert("Error submitting review");
+    }
+  };
+  const submitReview = async () => {
+    if (rating === 0) {
+      alert("Please rate the service");
+      return;
+    } else if (comments === "") {
+      alert("Please write a comment");
+      return;
+    } else if (userData.email === "") {
+      alert("Please login to submit a review");
+      navigate("/login");
+      return;
+    }
+    try {
+      await storeReview();
+    } catch (e) {
+      console.log(e);
+      alert("Error submitting review");
+    } finally {
+      setComments("");
+      setRating(0);
+      setHoverRating(0);
+    }
   };
   useEffect(() => {
     if (userData.email !== "") {
