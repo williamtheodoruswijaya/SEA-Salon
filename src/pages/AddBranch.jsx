@@ -105,7 +105,7 @@ function AddBranch() {
           <button
             onClick={addBranch}
             type="button"
-            className=" rounded-xl bg-tertiary text-background font-semibold min-w-[20rem]  p-3 hover:bg-background hover:text-black items-center justify-center"
+            className=" rounded-xl bg-tertiary text-background font-semibold min-w-[20rem] w-full p-3 hover:bg-background hover:text-black items-center justify-center"
           >
             Add Branch
           </button>

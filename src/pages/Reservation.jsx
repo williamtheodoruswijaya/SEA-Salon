@@ -172,7 +172,7 @@ function Reservation() {
           {/* End of reservation forms */}
           <div className="flex flex-row mb-10">
             <button
-              className="bg-primary text-background rounded-3xl min-h-[8vh] px-5 mx-5 min-w-[50vh] border border-primary hover:border-tertiary transition duration-300 ease-in-out"
+              className="bg-primary text-background text-[3vh] rounded-3xl min-h-[8vh] px-5 mx-5 min-w-[50vh] w-full border border-primary hover:border-tertiary transition duration-300 ease-in-out"
               onClick={submitReservation}
             >
               Reserve

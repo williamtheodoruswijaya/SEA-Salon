@@ -156,7 +156,7 @@ function Review() {
             </div>
             <button
               onClick={submitReview}
-              className="bg-secondary hover:bg-tertiary transition duration-300 ease-in-out rounded-xl p-3 ml-10 min-w-[40vh] min-h-[7vh] text-white"
+              className="bg-secondary text-[3vh] hover:bg-tertiary transition duration-300 ease-in-out rounded-xl p-3 ml-10 min-w-[40vh] min-h-[7vh] text-white"
             >
               Submit
             </button>
