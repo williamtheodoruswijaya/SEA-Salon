@@ -17,11 +17,13 @@ function Dashboard() {
         rel="stylesheet"
       ></link>
       <Navbar />
-      <div className="bg-[url('./assets/dashboard-background.png')] w-full h-auto">
+      <div className="bg-[url('./assets/dashboard-background.png')] bg-cover w-full h-auto">
         <div className="flex flex-row items-center justify-center">
           <div>
-            <h1 className="text-8xl font-bold text-primary mx-10">Sea Salon</h1>
-            <p className="text-sm font-medium text-primary mx-10">
+            <h1 className="text-[15vh] font-bold text-primary mx-10">
+              Sea Salon
+            </h1>
+            <p className="text-[3vh] font-medium text-primary mx-10">
               {" "}
               “Beauty and Elegance Redefined”
             </p>
@@ -33,7 +35,7 @@ function Dashboard() {
           />
         </div>
         <div className="flex flex-col items-center justify-center bg-primary w-full h-auto ">
-          <h1 className="text-6xl font-bold text-background mx-10 my-10">
+          <h1 className="text-[9vh] font-bold text-background mx-10 my-10">
             Our Services
           </h1>
 

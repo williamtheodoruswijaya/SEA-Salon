@@ -68,19 +68,19 @@ function Review() {
         rel="stylesheet"
       ></link>
       <Navbar />
-      <div className="bg-[url('./assets/dashboard-background.png')] w-screen h-screen">
+      <div className="bg-[url('./assets/dashboard-background.png')] bg-cover w-screen h-screen">
         <div className="flex flex-row items-center justify-center">
           <div>
             {isLogin ? (
-              <h1 className="text-5xl font-bold text-primary mx-10 my-5">
+              <h1 className="text-[6vh] font-bold text-primary mx-10 my-5">
                 How was your experience, {namaDepan}?
               </h1>
             ) : (
-              <h1 className="text-5xl font-bold text-primary mx-10 my-2">
+              <h1 className="text-[6vh] font-bold text-primary mx-10 my-2">
                 How was your experience?
               </h1>
             )}
-            <p className="text-sm font-medium text-primary mx-10">
+            <p className="text-[2vh] font-medium text-primary mx-10">
               {" "}
               Your feedback is valuable to us.
             </p>

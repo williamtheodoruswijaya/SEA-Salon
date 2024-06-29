@@ -1,10 +1,14 @@
 import Navbar from "../components/Navbar";
 import reservation from "../assets/reservation.png";
-import { useEffect, useState } from "react";
+import { useState, useContext, useEffect } from "react";
+import { AuthContext } from "../context/AuthContext";
 import { collection, getDocs } from "firebase/firestore";
 import { db } from "../firebase";
+import { useNavigate } from "react-router-dom";
 
 function Reservation() {
+  const { userData } = useContext(AuthContext);
+  const navigate = useNavigate();
   const [fullName, setFullName] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
   const [service, setService] = useState("");
@@ -39,6 +43,9 @@ function Reservation() {
       time === ""
     ) {
       alert("Please fill up all the fields");
+    } else if (userData.email === "") {
+      alert("Please login to reserve");
+      navigate("/login");
     } else {
       alert("Reservation Successful!");
     }
@@ -53,7 +60,7 @@ function Reservation() {
         rel="stylesheet"
       ></link>
       <Navbar />
-      <div className="bg-[url('./assets/dashboard-background.png')] w-full h-auto">
+      <div className="bg-[url('./assets/dashboard-background.png')] bg-cover w-full h-auto">
         <div className="flex flex-row items-center justify-center">
           <div className="ml-10 mt-10 md:mt-[10vh]">
             <img
@@ -63,13 +70,13 @@ function Reservation() {
             />
           </div>
           <div className="mx-10 my-2">
-            <h1 className="text-5xl font-bold text-primary">
+            <h1 className="text-[6vh] font-bold text-primary">
               Pamper Yourself at Sea Salon <br></br>Book Now! Feel the Beauty!
             </h1>
           </div>
         </div>
         <div className="flex flex-col items-center justify-center bg-gradient-to-r from-primary to-secondary w-full h-auto ">
-          <h1 className="text-6xl font-bold text-background mx-10 my-10">
+          <h1 className="text-[9vh] font-bold text-background mx-10 my-10">
             Reserve Now!
           </h1>
           <div className=" pb-5 flex">
