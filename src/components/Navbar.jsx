@@ -19,8 +19,14 @@ function Navbar() {
     } else if (title === "Register") {
       navigate("/register");
     } else if (title === "Logout") {
-      auth.signOut();
-      navigate("/login");
+      auth
+        .signOut()
+        .then(() => {
+          navigate("/login");
+        })
+        .catch((error) => {
+          console.error("Error signing out: ", error);
+        });
     }
   };
 

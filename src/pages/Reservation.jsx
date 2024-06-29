@@ -1,6 +1,8 @@
 import Navbar from "../components/Navbar";
 import reservation from "../assets/reservation.png";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { collection, getDocs } from "firebase/firestore";
+import { db } from "../firebase";
 
 function Reservation() {
   const [fullName, setFullName] = useState("");
@@ -8,6 +10,25 @@ function Reservation() {
   const [service, setService] = useState("");
   const [date, setDate] = useState("");
   const [time, setTime] = useState("");
+  const [services, setServices] = useState([]);
+
+  useEffect(() => {
+    const fetchServices = async () => {
+      try {
+        const MsServices = collection(db, "MsServices");
+        const snapshot = await getDocs(MsServices);
+        const servicesId = snapshot.docs.map((doc) => ({
+          id: doc.id,
+          ...doc.data(),
+        }));
+        setServices(servicesId);
+      } catch (error) {
+        console.error("Error getting document:", error);
+        return;
+      }
+    };
+    fetchServices();
+  }, []);
 
   const submitReservation = () => {
     if (
@@ -76,11 +97,11 @@ function Reservation() {
               className="bg-white text-black rounded-lg min-w-[70vh] h-10 px-2"
             >
               <option value="">Select your services</option>
-              <option value="Haircut and Styling">Haircut and Styling</option>
-              <option value="Manicure and Pedicure">
-                Manicure and Pedicure
-              </option>
-              <option value="Facial Treatments">Facial Treatments</option>
+              {services.map((service) => (
+                <option key={service.id} value={service.name}>
+                  {service.name}
+                </option>
+              ))}
             </select>
           </div>
           <div className="flex flex-row">
