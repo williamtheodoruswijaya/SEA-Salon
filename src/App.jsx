@@ -9,7 +9,7 @@ import Admin from "./pages/Admin.jsx";
 function App() {
   return (
     <>
-      <Router>
+      <Router basename="/SEA-Salon">
         <Routes>
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
