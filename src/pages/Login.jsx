@@ -91,7 +91,7 @@ function Login() {
             <button
               onClick={signIn}
               type="button"
-              className=" rounded-xl bg-tertiary text-background font-semibold min-w-[20rem]  p-2 hover:bg-background hover:text-black items-center justify-center"
+              className=" rounded-xl bg-tertiary text-background font-semibold min-w-[20rem] w-full p-2 hover:bg-background hover:text-black items-center justify-center"
             >
               Login
             </button>

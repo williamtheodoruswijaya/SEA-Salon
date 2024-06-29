@@ -2,7 +2,7 @@ import Navbar from "../components/Navbar";
 import reservation from "../assets/reservation.png";
 import { useState, useContext, useEffect } from "react";
 import { AuthContext } from "../context/AuthContext";
-import { collection, getDocs } from "firebase/firestore";
+import { collection, getDocs, query, where } from "firebase/firestore";
 import { db } from "../firebase";
 import { useNavigate } from "react-router-dom";
 
@@ -37,10 +37,13 @@ function Reservation() {
   }, []);
 
   useEffect(() => {
-    const fetchServices = async () => {
+    const fetchServices = async (branch) => {
       try {
         const MsServices = collection(db, "MsServices");
-        const snapshot = await getDocs(MsServices);
+        const branchName = branch;
+        console.log(branchName);
+        const q = query(MsServices, where("branch", "==", branchName));
+        const snapshot = await getDocs(q);
         const servicesId = snapshot.docs.map((doc) => ({
           id: doc.id,
           ...doc.data(),
@@ -51,8 +54,8 @@ function Reservation() {
         return;
       }
     };
-    fetchServices();
-  }, []);
+    fetchServices(branch);
+  }, [branch]);
 
   const submitReservation = () => {
     if (

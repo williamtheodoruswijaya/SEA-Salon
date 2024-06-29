@@ -1,15 +1,36 @@
-import { doc, setDoc } from "firebase/firestore";
-import { useState } from "react";
+import { collection, doc, getDocs, setDoc } from "firebase/firestore";
+import { useEffect, useState } from "react";
 import { db } from "../firebase";
 import { v4 as uuidv4 } from "uuid";
 import AdminNavbar from "../components/AdminNavbar";
 
 function Admin() {
+  const [branch, setBranch] = useState("");
+  const [branches, setBranches] = useState([]);
   const [services, setServices] = useState("");
   const [duration, setDuration] = useState();
+  useEffect(() => {
+    const fetchBranches = async () => {
+      try {
+        const MsBranches = collection(db, "MsBranches");
+        const snapshot = await getDocs(MsBranches);
+        const branches = snapshot.docs.map((doc) => ({
+          id: doc.id,
+          ...doc.data(),
+        }));
+        setBranches(branches);
+      } catch (error) {
+        console.error("Error getting document:", error);
+        return;
+      }
+    };
+    fetchBranches();
+  }, []);
+
   const addToDatabase = async () => {
     try {
       const docRef = await setDoc(doc(db, "MsServices", uuidv4()), {
+        branch: branch,
         name: services,
         duration: duration,
       });
@@ -21,7 +42,7 @@ function Admin() {
     }
   };
   const addService = async () => {
-    if (services === "" || duration === "") {
+    if (services === "" || duration === "" || branch === "") {
       alert("Please fill in all fields");
       return;
     }
@@ -48,6 +69,20 @@ function Admin() {
         <form className="form-content p-10 min-w-[50vh] rounded-3xl items-center justify-center bg-secondary">
           <div className="font-semibold text-xl pb-5 w-full text-center text-background">
             Add Services
+          </div>
+          <div className="form-group pb-5 w-full">
+            <select
+              value={branch}
+              onChange={(e) => setBranch(e.target.value)}
+              className="bg-white p-3 rounded-xl bg-bluefield text-black w-full"
+            >
+              <option value="">Select Branch</option>
+              {branches.map((branch) => (
+                <option key={branch.id} value={branch.name}>
+                  {branch.name}
+                </option>
+              ))}
+            </select>
           </div>
           <div className="form-group pb-5 w-full">
             <input

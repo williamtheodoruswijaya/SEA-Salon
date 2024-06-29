@@ -33,7 +33,7 @@ function Register() {
       alert("Please fill up all the fields");
       return;
     } else if (!email.endsWith("@gmail.com")) {
-      alert("Please enter a valid email address");
+      alert("Please enter a valid email address (ending with @gmail.com)");
       return;
     }
     try {
@@ -109,7 +109,7 @@ function Register() {
             <button
               onClick={register}
               type="button"
-              className=" rounded-xl bg-tertiary text-background font-semibold min-w-[20rem]  p-2 hover:bg-background hover:text-black items-center justify-center"
+              className=" rounded-xl bg-tertiary text-background font-semibold min-w-[20rem] w-full p-2 hover:bg-background hover:text-black items-center justify-center"
             >
               Register
             </button>
