@@ -45,7 +45,7 @@ function Admin() {
       ></link>
       <AdminNavbar />
       <div className="w-screen h-screen items-center justify-center bg-primary flex">
-        <form className="form-content p-10 min-w-[50vh] rounded-3xl bg-secondary">
+        <form className="form-content p-10 min-w-[50vh] rounded-3xl items-center justify-center bg-secondary">
           <div className="font-semibold text-xl pb-5 w-full text-center text-background">
             Add Services
           </div>

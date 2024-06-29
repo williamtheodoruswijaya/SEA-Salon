@@ -5,6 +5,7 @@ import Reservation from "./pages/Reservation.jsx";
 import Login from "./pages/Login.jsx";
 import Register from "./pages/Register.jsx";
 import Admin from "./pages/Admin.jsx";
+import AddBranch from "./pages/AddBranch.jsx";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
           <Route path="/review" element={<Review />} />
           <Route path="/reservation" element={<Reservation />} />
           <Route path="/admin" element={<Admin />} />
+          <Route path="/add-branch" element={<AddBranch />} />
         </Routes>
       </Router>
     </>

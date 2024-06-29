@@ -6,6 +6,8 @@ function AdminNavbar() {
   const handleClick = (title) => {
     if (title === "Add Services") {
       navigate("/admin");
+    } else if (title === "Add Branch") {
+      navigate("/add-branch");
     } else if (title === "Logout") {
       navigate("/login");
     }
@@ -22,6 +24,7 @@ function AdminNavbar() {
         <div className="flex flex-col text-center ">
           <div className="text-3xl font-semibold mb-10 text-white">Admin</div>
           <Card title="Add Services" handleClick={handleClick} />
+          <Card title="Add Branch" handleClick={handleClick} />
           <Card title="Logout" handleClick={handleClick} />
         </div>
       </nav>

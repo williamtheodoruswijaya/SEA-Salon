@@ -5,6 +5,7 @@ function Card(props) {
 
   const pathMapping = {
     "/admin": "Add Services",
+    "/add-branch": "Add Branch",
     "/login": "Logout",
   };
   const isActive = pathMapping[location.pathname] === props.title;

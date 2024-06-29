@@ -12,9 +12,29 @@ function Reservation() {
   const [fullName, setFullName] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
   const [service, setService] = useState("");
+  const [branch, setBranch] = useState("");
   const [date, setDate] = useState("");
   const [time, setTime] = useState("");
   const [services, setServices] = useState([]);
+  const [branches, setBranches] = useState([]);
+
+  useEffect(() => {
+    const fetchBranches = async () => {
+      try {
+        const MsBranches = collection(db, "MsBranches");
+        const snapshot = await getDocs(MsBranches);
+        const branches = snapshot.docs.map((doc) => ({
+          id: doc.id,
+          ...doc.data(),
+        }));
+        setBranches(branches);
+      } catch (error) {
+        console.error("Error getting document:", error);
+        return;
+      }
+    };
+    fetchBranches();
+  }, []);
 
   useEffect(() => {
     const fetchServices = async () => {
@@ -38,6 +58,7 @@ function Reservation() {
     if (
       fullName === "" ||
       phoneNumber === "" ||
+      branch === "" ||
       service === "" ||
       date === "" ||
       time === ""
@@ -96,6 +117,20 @@ function Reservation() {
               placeholder="Phone Number"
               className="bg-white text-black rounded-lg min-w-[70vh] h-10 px-2"
             />
+          </div>
+          <div className="pb-5 flex">
+            <select
+              value={branch}
+              onChange={(e) => setBranch(e.target.value)}
+              className="bg-white text-black rounded-lg min-w-[70vh] h-10 px-2"
+            >
+              <option value="">Select Branches</option>
+              {branches.map((branche) => (
+                <option key={branche.id} value={branche.name}>
+                  {branche.name}
+                </option>
+              ))}
+            </select>
           </div>
           <div className="pb-5 flex">
             <select
