@@ -5,7 +5,7 @@ import react from "@vitejs/plugin-react";
 export default defineConfig({
   base: "/SEA-Salon/",
   build: {
-    outDir: "build",
+    outDir: "dist",
   },
   plugins: [react()],
 });
