@@ -1,0 +1,5 @@
+{
+  "rewrites": [
+    { "source": "/SEA-Salon/**", "destination": "/SEA-Salon/index.html" }
+  ]
+}
