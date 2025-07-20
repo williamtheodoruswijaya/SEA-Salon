@@ -1,5 +1,3 @@
 {
-  "rewrites": [
-    { "source": "/SEA-Salon/**", "destination": "/SEA-Salon/index.html" }
-  ]
+  "rewrites": [{ "source": "/(.*)", "destination": "/" }]
 }

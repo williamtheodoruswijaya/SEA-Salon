@@ -10,7 +10,7 @@ import AddBranch from "./pages/AddBranch.jsx";
 function App() {
   return (
     <>
-      <Router basename="/SEA-Salon">
+      <Router>
         <Routes>
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
